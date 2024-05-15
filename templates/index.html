@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Анализ текста</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #e0f2e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Анализ текста</h1>
+        <form method="POST" enctype="multipart/form-data">
+
+            <input type="file" name="file">
+
+
+            <input type="submit" value="Анализировать">
+        </form>
+        {% if result %}
+            <h2>Результаты (Слово/Кол-во появлений):</h2>
+            <ol>
+                {% for word, count in result %}
+                    <li>{{ word }}: {{ count }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </div>
+</body>
+</html>
